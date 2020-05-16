@@ -1,0 +1,12 @@
+0.4 14may20
+* Imported from original weewx-historical repository.
+* Added the ability to calculate the number of days with an average above or below a value.
+
+0.30 08apr20
+* Added tags historical_min_avg and historical_max_avg.
+
+0.20 05apr20
+* Added support for mysql
+
+0.10 30feb20
+* initial version
