@@ -6,7 +6,7 @@ This extension adds some useful aggregation types to WeeWX, using the XTypes fac
 Works for both SQLite and MySQL.
 
 ## Prerequisite
-XStats will only work with WeeWX V4.1 or later. 
+XStats will only work with WeeWX V4.2 or later. 
 
 ## Installation instructions
 

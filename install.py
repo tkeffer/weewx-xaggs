@@ -10,7 +10,7 @@ from distutils.version import StrictVersion
 from weecfg.extension import ExtensionInstaller
 import weewx
 
-REQUIRED_WEEWX = "4.0.0"
+REQUIRED_WEEWX = "4.2.0"
 if StrictVersion(weewx.__version__) < StrictVersion(REQUIRED_WEEWX):
     raise weewx.UnsupportedFeature("weewx %s or greater is required, found %s"
                                    % (REQUIRED_WEEWX, weewx.__version__))
@@ -23,7 +23,7 @@ def loader():
 class XStatsInstaller(ExtensionInstaller):
     def __init__(self):
         super(XStatsInstaller, self).__init__(
-            version="0.4",
+            version="0.5",
             name='xstats',
             description='XTypes extension that calculates historical highs and lows for a date, '
                         'or days above or below a mean value',

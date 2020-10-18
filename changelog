@@ -1,3 +1,6 @@
+0.5 18oct20
+* WeeWX V4.2 makes it no longer necessary to patch ObservationBinder.
+
 0.4 14may20
 * Imported from original weewx-historical repository.
 * Added the ability to calculate the number of days with an average above or below a value.

@@ -7,7 +7,11 @@
 
   - historical highs, lows for a date, and the times they occurred;
   - the number of days in a time span with the average greater than, greater than or equal to,
-    less than, or less than or equal, to a value."""
+    less than, or less than or equal, to a value.
+
+    WeeWX Version 4.2 or later REQUIRED.
+
+    """
 
 import datetime
 
@@ -18,7 +22,7 @@ import weewx.xtypes
 from weeutil.weeutil import isStartOfDay
 from weewx.engine import StdService
 
-VERSION = "0.4"
+VERSION = "0.5"
 
 # We have to add this to the collection of special aggregation types that change the unit. For example, asking for the
 # time of a minimum temperature returns something in group_time, not group_temperature.
@@ -177,24 +181,26 @@ class XStatsAvg(weewx.xtypes.XType):
         return vt
 
 
-# Patch the class weewx.tags.ObservationBinder with new member functions that call _do_query() with the proper
-# aggregate type and, most importantly, the value:
-weewx.tags.ObservationBinder.avg_ge = lambda self, val: self._do_query('avg_ge', val)
-weewx.tags.ObservationBinder.avg_gt = lambda self, val: self._do_query('avg_gt', val)
-weewx.tags.ObservationBinder.avg_le = lambda self, val: self._do_query('avg_le', val)
-weewx.tags.ObservationBinder.avg_lt = lambda self, val: self._do_query('avg_lt', val)
-
-# Instantiate instances of XStatsHistorical and XStatsAvg, and add them to the list of xtypes
-weewx.xtypes.xtypes.append(XStatsHistorical())
-weewx.xtypes.xtypes.append(XStatsAvg())
-
-
 class XStatsService(StdService):
     """WeeWX dummy service for initializing the XStats extensions.
 
-    This service should be included in 'report_services' in weewx.conf, which forces this module to get loaded,
-    thus making its extensions available.
+    This service should be included in the `xtypes_services` section of weewx.conf.
     """
+
+    def __init__(self, engine, config_dict):
+        super(XStatsService, self).__init__(engine, config_dict)
+
+        # Create instances of XStatsHistorical and XStatsAvg:
+        self.xstats_historical = XStatsHistorical()
+        self.xstats_avg = XStatsAvg()
+        # Register them with the XTypes system:
+        weewx.xtypes.xtypes.append(self.xstats_historical)
+        weewx.xtypes.xtypes.append(self.xstats_avg)
+
+    def shutDown(self):
+        # The engine is shutting down. Remove the XType extensions:
+        weewx.xtypes.xtypes.remove(self.xstats_historical)
+        weewx.xtypes.xtypes.remove(self.xstats_avg)
 
 
 if __name__ == '__main__':
@@ -203,7 +209,7 @@ if __name__ == '__main__':
     from weeutil.weeutil import archiveDaySpan, archiveMonthSpan
 
     db_manager = weewx.manager.DaySummaryManager.open({'SQLITE_ROOT': '/home/weewx/archive',
-                                                       'database_name': 'big_weewx.sdb',
+                                                       'database_name': 'weewx.sdb',
                                                        'driver': 'weedb.sqlite'})
 
     # 2-jan-2020, 0400:
