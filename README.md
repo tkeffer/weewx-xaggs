@@ -1,12 +1,12 @@
-# XStats
+# XAggs
 This extension adds some useful aggregation types to WeeWX, using the XTypes facility. 
- - historical highs and lows for a date;
- - the number of days above or below an average value. 
+ - Historical highs and lows for a date;
+ - The number of days above or below an average value. 
  
 Works for both SQLite and MySQL.
 
 ## Prerequisite
-XStats will only work with WeeWX V4.2 or later. 
+XAggs will only work with WeeWX V4.2 or later. 
 
 ## Installation instructions
 
@@ -14,8 +14,8 @@ XStats will only work with WeeWX V4.2 or later.
 
     ```shell
     cd /home/weewx
-    wget https://github.com/tkeffer/weewx-xstats/archive/master.zip
-    wee_extension --install=weewx-xstats.zip
+    wget https://github.com/tkeffer/weewx-aggs/archive/master.zip
+    wee_extension --install=weewx-xaggs.zip
     ```
 2. Restart WeeWX. For example:
 

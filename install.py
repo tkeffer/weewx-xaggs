@@ -3,7 +3,7 @@
 #
 #    See the file LICENSE.txt for your full rights.
 #
-"""Installer for XStats"""
+"""Installer for XAggs"""
 
 from distutils.version import StrictVersion
 
@@ -17,18 +17,18 @@ if StrictVersion(weewx.__version__) < StrictVersion(REQUIRED_WEEWX):
 
 
 def loader():
-    return XStatsInstaller()
+    return XAggsInstaller()
 
 
-class XStatsInstaller(ExtensionInstaller):
+class XAggsInstaller(ExtensionInstaller):
     def __init__(self):
-        super(XStatsInstaller, self).__init__(
-            version="0.5",
-            name='xstats',
+        super(XAggsInstaller, self).__init__(
+            version="0.6",
+            name='xaggs',
             description='XTypes extension that calculates historical highs and lows for a date, '
                         'or days above or below a mean value',
             author="Thomas Keffer",
             author_email="tkeffer@gmail.com",
-            report_services='user.xstats.XStatsService',
-            files=[('bin/user', ['bin/user/xstats.py'])]
+            xtypes_services='user.xstats.XStatsService',
+            files=[('bin/user', ['bin/user/xaggs.py'])]
         )

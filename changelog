@@ -1,3 +1,6 @@
+0.6 18oct20
+* Renamed from xstats to xaggs.
+
 0.5 18oct20
 * WeeWX V4.2 makes it no longer necessary to patch ObservationBinder.
 
