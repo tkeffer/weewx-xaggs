@@ -14,7 +14,7 @@ XAggs will only work with WeeWX V4.2 or later.
 
     ```shell
     cd /home/weewx
-    wget https://github.com/tkeffer/weewx-aggs/archive/master.zip
+    wget https://github.com/tkeffer/weewx-xaggs/archive/master.zip
     wee_extension --install=weewx-xaggs.zip
     ```
 2. Restart WeeWX. For example:
