@@ -41,6 +41,7 @@ After installation, these new aggregation types will be available:
 | `avg_le(val)`         | The number of days with average <= `val`.        |
 | `avg_lt(val)`         | The number of days with average < `val`.         |
 
+### Tags
 For example, the following template
 
     <p>Historically high temperature for this day: 
@@ -53,6 +54,34 @@ would result in something like:
 >Historically high temperature for this day: 64.8°F in 2013<br/>
 Number of days this month with average temperature over 20°C: 11
 
+### Plots
+
+Plots can also be made, which show historical highs and lows. For example, putting this plot
+specification under the `[[monthimages]]` section of `skin.conf`.
+
+```ini
+    [[monthimages]]
+
+        ...
+
+        [[[monthhistorical]]]
+             [[[[min]]]]
+                 label = min
+                 aggregate_type = historical_min
+                 aggregate_interval = day
+                 data_type = outTemp
+             [[[[outTemp]]]]
+             [[[[max]]]]
+                label = max
+                aggregate_type = historical_max
+                aggregate_interval = day
+                data_type = outTemp
+```
+will result in a plot that looks something like this:
+
+![](images/monthhistorical.png)
+
 ## Limitations
-In this version, the `historical_` aggregations can *only* be used with the `$day` tag. 
+The only supported aggregation interval is one day. This means the `historical_` aggregations can
+*only* be used with the `$day` tag, or in plots with an aggregation interval of one day. 
 
