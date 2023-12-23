@@ -1,3 +1,6 @@
+0.9 22dec23
+* No longer depend on distutils
+
 0.8 09dec21
 * Fixed typo in the installer.
 

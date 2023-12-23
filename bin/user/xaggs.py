@@ -1,5 +1,5 @@
 #
-#    Copyright (c) 2020 Tom Keffer <tkeffer@gmail.com>
+#    Copyright (c) 2023 Tom Keffer <tkeffer@gmail.com>
 #
 #    See the file LICENSE.txt for your full rights.
 #
@@ -22,7 +22,7 @@ import weewx.xtypes
 from weeutil.weeutil import isStartOfDay
 from weewx.engine import StdService
 
-VERSION = "0.8"
+VERSION = "0.9"
 
 # We have to add this to the collection of special aggregation types that change the unit. For example, asking for the
 # time of a minimum temperature returns something in group_time, not group_temperature.
