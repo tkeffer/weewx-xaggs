@@ -9,7 +9,7 @@ from weecfg.extension import ExtensionInstaller
 import weewx
 
 REQUIRED_WEEWX = "4.2.0"
-weewx.require_weeNo longer depend on distutilswx_version('weewx-xaggs', REQUIRED_WEEWX)
+weewx.require_weewx_version('weewx-xaggs', REQUIRED_WEEWX)
 
 
 def loader():
