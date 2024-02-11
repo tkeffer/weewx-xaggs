@@ -1,5 +1,5 @@
 #
-#    Copyright (c) 2023 Tom Keffer <tkeffer@gmail.com>
+#    Copyright (c) 2023-2024 Tom Keffer <tkeffer@gmail.com>
 #
 #    See the file LICENSE.txt for your full rights.
 #
@@ -22,7 +22,7 @@ import weewx.xtypes
 from weeutil.weeutil import isStartOfDay
 from weewx.engine import StdService
 
-VERSION = "0.9"
+VERSION = "1.0"
 
 # We have to add this to the collection of special aggregation types that change the unit. For example, asking for the
 # time of a minimum temperature returns something in group_time, not group_temperature.
@@ -148,7 +148,8 @@ class XAggsAvg(weewx.xtypes.XType):
             raise weewx.UnknownAggregation(aggregate_type)
 
         if db_manager.std_unit_system is None:
-            raise weewx.CannotCalculate("No unit system in database")
+            # Most likely, the database has not been used yet. Return zero.
+            return weewx.units.ValueTuple(0, 'count', 'group_count')
 
         val = option_dict.get('val')
 
@@ -241,6 +242,7 @@ if __name__ == '__main__':
     r = dh.get_aggregate('outTemp', dayspan, 'historical_avg', db_manager)
     print(r)
 
-    # da = XStatsAvg()
-    # r = da.get_aggregate('outTemp', monthspan, 'avg_ge', db_manager)((5.0, 'degree_C', 'group_temperature'))
-    # print(r)
+    da = XAggsAvg()
+    r = da.get_aggregate('outTemp', monthspan, 'avg_ge', db_manager)((5.0, 'degree_C', 'group_temperature'))
+    print(r)
+

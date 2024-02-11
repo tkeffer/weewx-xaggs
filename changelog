@@ -1,3 +1,6 @@
+1.0
+* Don't let get_aggregate() raise `weewx.CannotCalculate`. Return zero instead.
+
 0.9 22dec23
 * No longer depend on distutils
 

@@ -19,7 +19,7 @@ def loader():
 class XAggsInstaller(ExtensionInstaller):
     def __init__(self):
         super(XAggsInstaller, self).__init__(
-            version="0.9",
+            version="1.0",
             name='xaggs',
             description='XTypes extension that calculates historical highs and lows for a date, '
                         'or days above or below a mean value',
