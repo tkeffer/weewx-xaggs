@@ -13,9 +13,7 @@ XAggs will only work with WeeWX V4.2 or later.
 1. Download and install the extension
 
     ```shell
-    cd /home/weewx
-    wget https://github.com/tkeffer/weewx-xaggs/archive/master.zip
-    wee_extension --install=weewx-xaggs.zip
+    weectl extension install https://github.com/tkeffer/weewx-xaggs/archive/master.zip
     ```
 2. Restart WeeWX. For example:
 
@@ -29,13 +27,13 @@ After installation, these new aggregation types will be available:
 
 | *Name*                | *Description*                                    |
 |:----------------------|:-------------------------------------------------|
-| `historical_min`      | The lowest temperature seen on this day.         |
-| `historical_min_avg`  | The average lowest temperature seen on this day. |
-| `historical_max`      | The highest temperature seen on this day.        |
-| `historical_max_avg`  | The average highest temperature seen on this day.|
-| `historical_mintime`  | The time of the lowest temperature.              |
-| `historical_maxtime`  | The time of the highest temperature.             |
-| `historical_avg`      | The average temperature seen on this day.        |
+| `historical_min`      | The lowest observation seen on this day.         |
+| `historical_min_avg`  | The average lowest observation seen on this day. |
+| `historical_max`      | The highest observation seen on this day.        |
+| `historical_max_avg`  | The average highest observation seen on this day.|
+| `historical_mintime`  | The time of the lowest observation.              |
+| `historical_maxtime`  | The time of the highest observation.             |
+| `historical_avg`      | The average observation seen on this day.        |
 | `avg_ge(val)`         | The number of days with average >= `val`.        |
 | `avg_gt(val)`         | The number of days with average > `val`.         |
 | `avg_le(val)`         | The number of days with average <= `val`.        |
